@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Upload MP3</title>
+    <title>MP3 파일 업로드</title>
 </head>
 <body>
     <h1>MP3 파일 업로드</h1>
@@ -12,5 +12,10 @@
         <input type="file" name="file" accept=".mp3" required>
         <button type="submit">업로드</button>
     </form>
+
+    {% if midi_file %}
+    <h2>변환된 MIDI 파일 다운로드</h2>
+    <a href="{{ url_for('static', filename=midi_file) }}" download>{{ midi_file }}</a>
+    {% endif %}
 </body>
 </html>
