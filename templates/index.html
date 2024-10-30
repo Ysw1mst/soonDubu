@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Document</title>
+    <title>Upload MP3</title>
 </head>
 <body>
-    <h1>김재운재김재운!</h1>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <h1>MP3 파일 업로드</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3" required>
+        <button type="submit">업로드</button>
+    </form>
 </body>
 </html>
