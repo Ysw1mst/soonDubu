@@ -1,9 +1,13 @@
-/* 전체 화면 기본 설정 */
+/* 기본 스타일 */
 body {
-    margin: 0;
+    background-color: #1e1e1e;
+    color: #ffffff;
     font-family: Arial, sans-serif;
-    background-color: #1E1E1E;
-    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* 헤더 스타일 */
@@ -14,70 +18,105 @@ body {
 }
 
 .header h1 {
-    font-size: 36px;
+    font-size: 2.5rem;
     margin: 0;
 }
 
 .header h2 {
-    font-size: 18px;
-    color: #CCCCCC;
+    font-size: 1rem;
+    color: #a0a0a0;
+    margin: 5px 0 20px;
 }
 
-/* 메인 컨테이너 스타일 */
+/* 메인 컨테이너 */
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 250px);
-    max-width: 90%;
-    margin: 0 auto;
-}
-
-/* 박스 사이 간격 및 조절 가능 경계선 스타일 */
-.separator {
-    background-color: #4F4F4F;
-    width: 10px;
-    cursor: col-resize;
-    height: 100%;
-    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 1:2:1 비율 설정 */
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    min-height: 400px;
+    align-items: stretch;
 }
 
 /* 박스 스타일 */
 .box {
-    min-height: 500px; /* 세로 길이 고정 */
-    background-color: #333;
-    border-radius: 10px;
+    background-color: #2e2e2e;
+    border-radius: 8px;
     padding: 20px;
     text-align: center;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    transition: width 0.3s;
 }
 
-.left-box {
-    flex: 1;
+.box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-.middle-box {
-    flex: 2;
+.box p {
+    font-size: 1rem;
+    color: #a0a0a0;
 }
 
-.right-box {
-    flex: 1;
+/* 구분선 스타일 */
+.separator {
+    width: 10px;
+    background-color: #444;
+    cursor: col-resize;
+    margin: 0 5px;
+    height: 100%;
+    transition: background-color 0.2s;
 }
 
-/* 하단 설명 스타일 */
+.separator:hover {
+    background-color: #666;
+}
+
+/* 버튼 스타일 */
+form button,
+form input[type="file"] {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+form #resetButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+form #resetButton:hover {
+    background-color: #c82333;
+}
+
+/* 하단 푸터 */
 .footer {
-    text-align: center;
-    font-size: 14px;
-    color: #888888;
     margin-top: 20px;
-    padding-bottom: 20px;
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    text-align: center;
 }
 
 .footer a {
-    color: #4A90E2;
+    color: #007bff;
     text-decoration: none;
 }
 
@@ -85,37 +124,15 @@ body {
     text-decoration: underline;
 }
 
-/* 버튼 스타일 */
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* 모바일에서는 한 열로 */
+    }
 
-button:hover {
-    background-color: #45a049;
-}
-
-button:active {
-    background-color: #3e8e41;
-}
-
-/* 파일 선택 및 업로드 버튼 */
-input[type="file"] {
-    margin-bottom: 10px;
-}
-
-/* 링크 스타일 */
-a {
-    color: #4A90E2;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+    .separator {
+        width: 100%;
+        height: 10px;
+        cursor: row-resize;
+    }
 }

@@ -3,43 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>SoonDuBu - Convenient and easy session separation Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>SoonDuBu</title>
 </head>
 <body>
     <div class="header">
         <h1>SoonDuBu</h1>
         <h2>Convenient and easy session separation tool</h2>
     </div>
+
     <div class="container">
-        <div class="box left-box">
-            <h1>Upload MP3 Files</h1>
+        <div class="box">
+            <h2>Upload MP3 Files</h2>
             <form action="/upload" method="post" enctype="multipart/form-data">
-                <div class="button-container">
-                    <input type="file" name="file" accept=".mp3" required>
-                    <button type="submit">업로드</button>
-                    <button type="button" id="resetButton">초기화</button>
-                </div>
+                <input type="file" name="file" accept=".mp3" required>
+                <button type="submit">Upload</button>
+                <button type="button" id="resetButton">Reset</button>
             </form>
-            {% if midi_file %}
-            <h2>변환된 MIDI 파일 다운로드</h2>
-            <a href="{{ url_for('static', filename=midi_file) }}" download>다운로드</a>
-            {% endif %}
         </div>
-        <div class="box middle-box">
-            <h2>시각화</h2>
-            <p>여기에 MIDI 시각화가 표시될 예정입니다.</p>
+        <div class="separator"></div>
+        <div class="box">
+            <h2>Visualization</h2>
+            <p>MIDI 시각화가 표시될 예정입니다.</p>
         </div>
-        <div class="box right-box">
-            <h2>체크박스</h2>
-            <p>여기에 악기 텍스트 및 체크박스를 통해 추가, 제거, 수정을 할 수 있습니다.</p>
+        <div class="separator"></div>
+        <div class="box">
+            <h2>Checkbox</h2>
+            <p>악기 텍스트 및 체크박스를 통해 추가, 제거, 수정을 할 수 있습니다.</p>
         </div>
     </div>
 
-    <footer class="footer">
-        <p>© 2024 SoonDuBu - 제작자: Ysw1mst, Kim J.U | Contact: <a href="@">youremail@example.com</a></p>
-    </footer>
+    <div class="footer">
+        &copy; 2024 SoonDuBu - 제작자: Ysw1mst, Kim J.U | Contact: <a href="mailto:youremail@example.com">youremail@example.com</a>
+    </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="script.js"></script>
 </body>
 </html>
