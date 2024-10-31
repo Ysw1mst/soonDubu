@@ -8,13 +8,12 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
 }
 
 /* 헤더 스타일 */
 .header {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 
@@ -26,7 +25,7 @@ body {
 .header h2 {
     font-size: 1rem;
     color: #a0a0a0;
-    margin-top: 5px;
+    margin: 5px 0 20px;
 }
 
 /* 메인 컨테이너 */
@@ -34,10 +33,10 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; /* 1:2:1 비율 설정 */
     gap: 20px;
-    width: 80%;
+    width: 85%; /* 페이지 끝과의 공간을 줄이기 위해 폭을 줄임 */
     max-width: 1200px;
+    min-height: 800px; /* 박스의 세로 길이를 2배로 설정 */
     align-items: stretch;
-    margin: auto;
 }
 
 /* 박스 스타일 */
@@ -50,22 +49,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
-    resize: horizontal; /* 창 사이즈 조정 가능 */
-    min-width: 100px;
-    max-width: 100%;
-}
-
-.left-box {
-    grid-column: 1;
-}
-
-.middle-box {
-    grid-column: 2;
-}
-
-.right-box {
-    grid-column: 3;
+    transition: width 0.3s;
 }
 
 .box h2 {
@@ -76,6 +60,20 @@ body {
 .box p {
     font-size: 1rem;
     color: #a0a0a0;
+}
+
+/* 구분선 스타일 */
+.separator {
+    width: 10px;
+    background-color: #444;
+    cursor: col-resize;
+    margin: 0 5px;
+    height: 100%;
+    transition: background-color 0.2s;
+}
+
+.separator:hover {
+    background-color: #666;
 }
 
 /* 버튼 스타일 */
@@ -111,15 +109,10 @@ form #resetButton:hover {
 
 /* 하단 푸터 */
 .footer {
-    text-align: center;
+    margin-top: 20px;
     font-size: 0.8rem;
     color: #a0a0a0;
-    margin-top: 20px;
-    padding: 10px 0;
-    width: 100%;
-    background-color: #1e1e1e;
-    position: sticky;
-    bottom: 0;
+    text-align: center;
 }
 
 .footer a {
@@ -137,7 +130,9 @@ form #resetButton:hover {
         grid-template-columns: 1fr; /* 모바일에서는 한 열로 */
     }
 
-    .box {
-        resize: none; /* 모바일에서는 크기 조절 불가 */
+    .separator {
+        width: 100%;
+        height: 10px;
+        cursor: row-resize;
     }
 }
