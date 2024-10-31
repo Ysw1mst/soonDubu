@@ -13,7 +13,6 @@ separators.forEach(separator => {
 
     function resize(e) {
         const containerWidth = document.querySelector('.container').offsetWidth;
-
         if (separator.previousElementSibling === leftBox) {
             let newWidth = e.clientX - leftBox.getBoundingClientRect().left;
             leftBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.1)}px`;
