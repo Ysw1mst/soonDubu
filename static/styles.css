@@ -1,65 +1,110 @@
+/* 기본 설정 */
 body {
-    background-color: #27282A;
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-    text-align: center;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #27282A;
+    color: #fff;
 }
 
+/* 제목 및 부제목 스타일 */
 .header {
-    margin-bottom: 20px;
+    text-align: center;
+    padding: 40px 0 20px;
 }
 
+.header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.header h2 {
+    font-size: 18px;
+    color: #aaa;
+    margin: 10px 0 0;
+}
+
+/* 메인 컨테이너 스타일 */
 .container {
     display: flex;
-    justify-content: center;
-    width: 80%;
-    max-width: 1200px;
-    margin: auto 0;
-    padding: 40px 0; /* 상단, 하단 마진 */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%; /* 페이지 양 끝 공백 줄임 */
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
+/* 박스 스타일 */
 .box {
-    background-color: #38393C;
-    border-radius: 10px;
+    flex: 1;
+    margin: 0 10px;
     padding: 20px;
+    background-color: #3A3B3C;
+    border-radius: 8px;
+    text-align: center;
+    min-height: 200px;
+}
+
+/* 구분선 스타일 */
+.separator {
+    background-color: #4F4F4F;
+    width: 5px;
+    cursor: col-resize;
+    margin: 0 10px; /* 박스 사이 간격을 위한 여백 */
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+/* 업로드 폼 스타일 */
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    transition: width 0.2s ease;
-    margin: 0 10px;
 }
 
-.left-box,
-.right-box {
-    width: 20%; /* 기본 너비 설정 */
-    min-width: 200px;
+input[type="file"] {
+    margin-bottom: 10px;
 }
 
-.middle-box {
-    width: 40%; /* 좌우 박스의 두 배 */
-    min-width: 300px;
+/* 다운로드 링크 스타일 */
+a.download-link {
+    color: #4CAF50;
+    font-size: 16px;
+    text-decoration: none;
 }
 
-.resizer {
-    width: 10px;
-    background-color: #555;
-    cursor: ew-resize;
-    position: absolute;
-    top: 0;
+a.download-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer 스타일 */
+.footer {
+    background-color: #1F2022;
+    color: #aaa;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
     bottom: 0;
-    z-index: 1;
-}
-
-.resizer-left {
-    left: -5px;
-}
-
-.resizer-right {
-    right: -5px;
+    font-size: 14px;
 }

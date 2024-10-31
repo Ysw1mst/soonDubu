@@ -23,24 +23,22 @@
             </form>
             {% if midi_file %}
             <h2>변환된 MIDI 파일 다운로드</h2>
-            <a href="{{ url_for('static', filename=midi_file) }}" download>{{ midi_file }}</a>
+            <a href="{{ url_for('static', filename=midi_file) }}" download>다운로드</a>
             {% endif %}
-            <div class="resizer resizer-right"></div>
         </div>
-        
         <div class="box middle-box">
             <h2>중간 박스</h2>
             <p>여기에 MIDI 시각화가 표시될 예정입니다.</p>
-            <div class="resizer resizer-left"></div>
-            <div class="resizer resizer-right"></div>
         </div>
-
         <div class="box right-box">
             <h2>오른쪽 박스</h2>
-            <p>여기에 악기 텍스트 및 체크박스를 통해 추가, 제거, 수정할 수 있습니다.</p>
-            <div class="resizer resizer-left"></div>
+            <p>여기에 악기 텍스트 및 체크박스를 통해 추가, 제거, 수정을 할 수 있습니다.</p>
         </div>
     </div>
+
+    <footer class="footer">
+        <p>© 2024 SoonDuBu - 제작자: Your Name | Contact: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+    </footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
