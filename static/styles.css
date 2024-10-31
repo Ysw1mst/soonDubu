@@ -12,34 +12,42 @@ body {
 
 .header {
     margin-bottom: 20px;
-    position: fixed; /* 상단 고정 */
+    position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1; /* 다른 요소 위에 위치하도록 설정 */
+    z-index: 1;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    align-items: center; /* 중앙 정렬 */
-    margin-top: 80px; /* 고정된 헤더 아래 여백 */
-    position: relative; /* 구분선을 위해 상대 위치 설정 */
-    height: calc(100vh - 100px); /* 전체 높이에서 헤더 크기만큼 빼기 */
+    align-items: stretch; /* 세로 길이 조정 */
+    margin-top: 80px; 
+    height: calc(100vh - 100px);
 }
 
 .box {
     background-color: #38393C;
     border-radius: 10px;
     padding: 20px;
-    margin: 0 10px;
-    flex: 1; /* 동일한 너비 */
+    flex: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 세로 중앙 정렬 */
-    align-items: center; /* 가로 중앙 정렬 */
-    min-height: 200px; /* 최소 높이 설정 */
-    transition: width 0.2s; /* 너비 변경 시 부드러운 애니메이션 */
+    justify-content: center;
+    align-items: center;
+    min-height: 200px; 
+    position: relative; /* 위치 설정 */
+}
+
+.resizer {
+    width: 10px; /* 드래그 핸들 너비 */
+    cursor: ew-resize; /* 가로 조정 커서 */
+    background-color: transparent; /* 배경색 투명 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 0; /* 박스 상단에 고정 */
+    right: 0; /* 오른쪽에 위치 */
+    height: 100%; /* 박스 높이에 맞춤 */
 }
 
 h1, h2 {
@@ -55,7 +63,7 @@ h1, h2 {
 
 button {
     border-radius: 10px;
-    background-color: #4CAF50; /* 버튼 색상 */
+    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -64,16 +72,5 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* 버튼 호버 색상 */
-}
-
-.divider {
-    width: 10px; /* 구분선의 너비 */
-    background-color: rgba(255, 255, 255, 0.5); /* 반투명한 흰색 */
-    height: 100%; /* 박스의 높이와 동일하게 설정 */
-    margin: 0 10px; /* 사이에 여백 */
-    cursor: ew-resize; /* 가로 조정 커서 */
-    position: absolute; /* 절대 위치 설정 */
-    top: 0; /* 박스 상단에 고정 */
-    z-index: 0; /* 박스 아래에 위치하도록 설정 */
+    background-color: #45a049;
 }
