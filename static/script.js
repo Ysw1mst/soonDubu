@@ -1,31 +1,37 @@
-const separators = document.querySelectorAll('.separator');
-const leftBox = document.querySelector('.left-box');
-const middleBox = document.querySelector('.middle-box');
-const rightBox = document.querySelector('.right-box');
+document.addEventListener('DOMContentLoaded', () => {
+    const separators = document.querySelectorAll('.separator');
+    let isResizing = false;
+    let currentBox = null;
+    let nextBox = null;
+    let startX = 0;
+    let startWidth = 0;
+    let nextStartWidth = 0;
 
-separators.forEach(separator => {
-    separator.addEventListener('mousedown', function (e) {
-        e.preventDefault();
+    separators.forEach(separator => {
+        separator.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            currentBox = separator.previousElementSibling;
+            nextBox = separator.nextElementSibling;
+            startX = e.clientX;
+            startWidth = currentBox.getBoundingClientRect().width;
+            nextStartWidth = nextBox.getBoundingClientRect().width;
+            document.body.style.cursor = 'col-resize';
+            e.preventDefault();
+        });
 
-        document.addEventListener('mousemove', resize);
-        document.addEventListener('mouseup', stopResize);
+        document.addEventListener('mousemove', (e) => {
+            if (isResizing) {
+                const dx = e.clientX - startX;
+                currentBox.style.flex = `0 0 ${startWidth + dx}px`;
+                nextBox.style.flex = `0 0 ${nextStartWidth - dx}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                document.body.style.cursor = 'default';
+            }
+        });
     });
-
-    function resize(e) {
-        const containerWidth = document.querySelector('.container').offsetWidth;
-        if (separator.previousElementSibling === leftBox) {
-            let newWidth = e.clientX - leftBox.getBoundingClientRect().left;
-            leftBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.1)}px`;
-            middleBox.style.flex = `0 0 ${Math.max(containerWidth - newWidth - rightBox.offsetWidth, containerWidth * 0.2)}px`;
-        } else if (separator.previousElementSibling === middleBox) {
-            let newWidth = e.clientX - middleBox.getBoundingClientRect().left;
-            middleBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.2)}px`;
-            rightBox.style.flex = `0 0 ${Math.max(containerWidth - newWidth - leftBox.offsetWidth, containerWidth * 0.1)}px`;
-        }
-    }
-
-    function stopResize() {
-        document.removeEventListener('mousemove', resize);
-        document.removeEventListener('mouseup', stopResize);
-    }
 });

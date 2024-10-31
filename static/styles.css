@@ -31,10 +31,9 @@ body {
     height: calc(100vh - 250px);
     max-width: 90%;
     margin: 0 auto;
-    gap: 20px; /* 박스 사이 간격 */
 }
 
-/* 조절 가능한 경계선 스타일 */
+/* 박스 사이 간격 및 조절 가능 경계선 스타일 */
 .separator {
     background-color: #4F4F4F;
     width: 10px;
@@ -56,8 +55,16 @@ body {
     justify-content: center;
 }
 
-.left-box, .middle-box, .right-box {
-    flex: 1; /* 박스 기본 너비 설정 */
+.left-box {
+    flex: 1;
+}
+
+.middle-box {
+    flex: 2;
+}
+
+.right-box {
+    flex: 1;
 }
 
 /* 하단 설명 스타일 */
