@@ -7,23 +7,35 @@
     <title>MP3 파일 업로드</title>
 </head>
 <body>
-    <h1>MP3 파일 업로드</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <div class="button-container">
-            <input type="file" name="file" accept=".mp3" required>
-            <button type="submit">업로드</button>
-            <button type="button" id="resetButton">초기화</button>
+    <div class="container">
+        <div class="box left-box">
+            <h1>MP3 파일 업로드</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="button-container">
+                    <input type="file" name="file" accept=".mp3" required>
+                    <button type="submit">업로드</button>
+                    <button type="button" id="resetButton">초기화</button>
+                </div>
+            </form>
+            {% if midi_file %}
+            <h2>변환된 MIDI 파일 다운로드</h2>
+            <a href="{{ url_for('static', filename=midi_file) }}" download>{{ midi_file }}</a>
+            {% endif %}
         </div>
-    </form>
-
-    {% if midi_file %}
-    <h2>변환된 MIDI 파일 다운로드</h2>
-    <a href="{{ url_for('static', filename=midi_file) }}" download>{{ midi_file }}</a>
-    {% endif %}
+        <div class="box middle-box">
+            <h2>중간 박스</h2>
+            <p>여기에 추가적인 내용이나 기능을 추가할 수 있습니다.</p>
+        </div>
+        <div class="box right-box">
+            <h2>오른쪽 박스</h2>
+            <p>여기에 추가적인 내용이나 기능을 추가할 수 있습니다.</p>
+        </div>
+    </div>
 
     <script>
         document.getElementById("resetButton").addEventListener("click", function() {
             document.querySelector('input[type="file"]').value = ""; // 파일 선택 초기화
+            window.location.reload(); // 페이지 새로고침
         });
     </script>
 </body>
