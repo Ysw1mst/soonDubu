@@ -4,7 +4,6 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -18,10 +17,10 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 80%;
     max-width: 1200px;
-    margin-top: 50px;
+    margin-top: 20px;
+    flex-grow: 1;
 }
 
 .box {
@@ -29,14 +28,25 @@ body {
     border-radius: 10px;
     padding: 20px;
     flex-grow: 1;
-    min-width: 200px; /* 최소 너비 설정 */
     margin: 0 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     position: relative;
     transition: width 0.2s ease;
+}
+
+.left-box {
+    min-width: 200px;
+}
+
+.middle-box {
+    min-width: 300px;
+    flex-grow: 2; /* 더 넓은 기본 크기 설정 */
+}
+
+.right-box {
+    min-width: 250px;
 }
 
 .resizer {
@@ -45,6 +55,14 @@ body {
     cursor: ew-resize;
     position: absolute;
     top: 0;
-    right: -5px; /* 박스의 오른쪽 경계에 위치 */
-    height: 100%;
+    bottom: 0;
+    z-index: 1;
+}
+
+.resizer-left {
+    left: -5px;
+}
+
+.resizer-right {
+    right: -5px;
 }

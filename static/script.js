@@ -1,22 +1,32 @@
 const resizers = document.querySelectorAll('.resizer');
 const boxes = document.querySelectorAll('.box');
 
-resizers.forEach((resizer, index) => {
+resizers.forEach((resizer) => {
     let startX;
     let startWidth;
+    let targetBox;
 
     resizer.addEventListener('mousedown', (e) => {
         startX = e.clientX;
-        startWidth = boxes[index].offsetWidth;
+        targetBox = resizer.parentElement;
+        startWidth = targetBox.offsetWidth;
 
         document.addEventListener('mousemove', resize);
         document.addEventListener('mouseup', stopResize);
     });
 
     function resize(e) {
-        const newWidth = startWidth + (e.clientX - startX);
-        if (newWidth > 100 && newWidth < 500) { // 최소 및 최대 너비 제한
-            boxes[index].style.width = newWidth + 'px';
+        const offset = e.clientX - startX;
+        if (resizer.classList.contains('resizer-left')) {
+            const newWidth = startWidth - offset;
+            if (newWidth > 100) {
+                targetBox.style.width = newWidth + 'px';
+            }
+        } else if (resizer.classList.contains('resizer-right')) {
+            const newWidth = startWidth + offset;
+            if (newWidth > 100) {
+                targetBox.style.width = newWidth + 'px';
+            }
         }
     }
 
