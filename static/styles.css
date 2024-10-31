@@ -46,6 +46,7 @@ body {
     padding: 20px;
     flex-grow: 1;
     transition: width 0.3s ease;
+    margin: 0 10px; /* 박스 간 간격 추가 */
 }
 
 /* 크기 조절 구분선 스타일 */
@@ -53,8 +54,8 @@ body {
     background-color: #4F4F4F;
     width: 5px;
     cursor: col-resize;
-    margin: 0 10px;
     height: 100%;
+    margin: 0;
 }
 
 /* 특정 박스의 초기 너비 */
