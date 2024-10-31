@@ -11,7 +11,7 @@ body {
 }
 
 .header {
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* 상단 여백 추가 */
 }
 
 .container {
@@ -61,6 +61,8 @@ button:hover {
 .divider {
     width: 1px;
     background-color: rgba(255, 255, 255, 0.5); /* 반투명한 흰색 */
-    height: 100%; /* 박스 높이에 맞추기 */
-    position: relative; /* 박스 안에서 절대 위치 */
+    height: 80%; /* 박스 높이에 맞추기 */
+    margin: 0 10px; /* 사이에 여백 */
+    cursor: ew-resize; /* 가로 조정 커서 */
+    position: relative; /* 절대 위치 설정을 위한 */
 }
