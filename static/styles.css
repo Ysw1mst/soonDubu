@@ -14,7 +14,8 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: center; /* 중앙 정렬 */
+    margin-top: 20px; /* 상단 여백 추가 */
 }
 
 .box {
@@ -25,13 +26,14 @@ body {
     flex: 1;
     min-width: 200px; /* 최소 너비 설정 */
     position: relative; /* 상대적 위치 지정 */
+    text-align: center; /* 중앙 정렬 */
 }
 
 .divider {
     width: 5px; /* 구분선의 너비 */
     background-color: rgba(255, 255, 255, 0.3); /* 반투명 구분선 */
     cursor: ew-resize; /* 커서를 동서 방향으로 변경 */
-    height: 100%; /* 구분선의 높이를 박스와 동일하게 설정 */
+    height: 80%; /* 구분선의 높이 조정 */
     margin: 0 5px; /* 구분선의 좌우 여백 설정 */
 }
 
