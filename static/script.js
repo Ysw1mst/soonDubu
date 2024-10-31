@@ -6,4 +6,6 @@ document.getElementById("resetButton").addEventListener("click", function() {
     if (downloadLink) {
         downloadLink.parentNode.removeChild(downloadLink); // 링크 제거
     }
+    // 업로드 상태 초기화 메시지 추가
+    alert("초기화되었습니다.");
 });
