@@ -15,7 +15,7 @@ resizers.forEach((resizer, index) => {
 
     function resize(e) {
         const newWidth = startWidth + (e.clientX - startX);
-        if (newWidth > 100) { // 최소 너비 제한
+        if (newWidth > 100 && newWidth < 500) { // 최소 및 최대 너비 제한
             boxes[index].style.width = newWidth + 'px';
         }
     }

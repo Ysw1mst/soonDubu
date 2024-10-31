@@ -2,75 +2,49 @@ body {
     background-color: #27282A;
     color: white;
     font-family: Arial, sans-serif;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     margin: 0;
+    text-align: center;
 }
 
 .header {
     margin-bottom: 20px;
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: stretch; /* 세로 길이 조정 */
-    margin-top: 80px; 
-    height: calc(100vh - 100px);
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin-top: 50px;
 }
 
 .box {
     background-color: #38393C;
     border-radius: 10px;
     padding: 20px;
-    flex: 1; 
+    flex-grow: 1;
+    min-width: 200px; /* 최소 너비 설정 */
+    margin: 0 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 200px; 
-    position: relative; /* 위치 설정 */
+    position: relative;
+    transition: width 0.2s ease;
 }
 
 .resizer {
-    width: 10px; /* 드래그 핸들 너비 */
-    cursor: ew-resize; /* 가로 조정 커서 */
-    background-color: transparent; /* 배경색 투명 */
-    position: absolute; /* 절대 위치 설정 */
-    top: 0; /* 박스 상단에 고정 */
-    right: 0; /* 오른쪽에 위치 */
-    height: 100%; /* 박스 높이에 맞춤 */
-}
-
-h1, h2 {
-    margin: 10px 0;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-button {
-    border-radius: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 0 5px;
-}
-
-button:hover {
-    background-color: #45a049;
+    width: 10px;
+    background-color: #555;
+    cursor: ew-resize;
+    position: absolute;
+    top: 0;
+    right: -5px; /* 박스의 오른쪽 경계에 위치 */
+    height: 100%;
 }
