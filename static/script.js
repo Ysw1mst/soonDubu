@@ -17,7 +17,7 @@ separators.forEach(separator => {
         if (separator.previousElementSibling === leftBox) {
             let newWidth = e.clientX - leftBox.getBoundingClientRect().left;
             leftBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.1)}px`;
-            middleBox.style.flex = `0 0 ${Math.max(containerWidth - newWidth - rightBox.offsetWidth, containerWidth * 0.1)}px`;
+            middleBox.style.flex = `0 0 ${Math.max(containerWidth - newWidth - rightBox.offsetWidth, containerWidth * 0.2)}px`;
         } else if (separator.previousElementSibling === middleBox) {
             let newWidth = e.clientX - middleBox.getBoundingClientRect().left;
             middleBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.2)}px`;
