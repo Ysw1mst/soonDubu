@@ -5,38 +5,41 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* 상단 고정 */
-    height: 100vh; /* 전체 높이 */
+    justify-content: flex-start;
+    height: 100vh;
     margin: 0;
 }
 
 .header {
-    margin-bottom: 20px; /* 상단 여백 추가 */
+    margin-bottom: 20px;
     position: fixed; /* 상단 고정 */
-    top: 20px; /* 상단 위치 */
+    top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* 중앙 정렬 */
+    transform: translateX(-50%);
     z-index: 1; /* 다른 요소 위에 위치하도록 설정 */
 }
 
 .container {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* 세로 방향으로 늘리기 */
-    margin-top: 100px; /* 고정된 헤더 아래 여백 */
+    align-items: center; /* 중앙 정렬 */
+    margin-top: 80px; /* 고정된 헤더 아래 여백 */
+    position: relative; /* 구분선을 위해 상대 위치 설정 */
+    height: calc(100vh - 100px); /* 전체 높이에서 헤더 크기만큼 빼기 */
 }
 
 .box {
-    background-color: #38393C; /* 밝은 회색 */
+    background-color: #38393C;
     border-radius: 10px;
     padding: 20px;
-    margin: 0 10px; /* 사이에 여백 */
+    margin: 0 10px;
     flex: 1; /* 동일한 너비 */
-    display: flex; /* 내용 중앙 정렬 */
-    flex-direction: column; /* 세로 방향으로 정렬 */
+    display: flex;
+    flex-direction: column;
     justify-content: center; /* 세로 중앙 정렬 */
     align-items: center; /* 가로 중앙 정렬 */
     min-height: 200px; /* 최소 높이 설정 */
+    transition: width 0.2s; /* 너비 변경 시 부드러운 애니메이션 */
 }
 
 h1, h2 {
@@ -65,10 +68,12 @@ button:hover {
 }
 
 .divider {
-    width: 1px;
+    width: 10px; /* 구분선의 너비 */
     background-color: rgba(255, 255, 255, 0.5); /* 반투명한 흰색 */
     height: 100%; /* 박스의 높이와 동일하게 설정 */
     margin: 0 10px; /* 사이에 여백 */
     cursor: ew-resize; /* 가로 조정 커서 */
-    position: relative; /* 절대 위치 설정을 위한 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 0; /* 박스 상단에 고정 */
+    z-index: 0; /* 박스 아래에 위치하도록 설정 */
 }
