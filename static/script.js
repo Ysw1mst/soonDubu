@@ -32,3 +32,26 @@ function stopResizing() {
     document.removeEventListener('mousemove', resizeBoxes);
     document.removeEventListener('mouseup', stopResizing);
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    const leftBox = document.querySelector(".left-box");
+    const middleBox = document.querySelector(".middle-box");
+    const rightBox = document.querySelector(".right-box");
+
+    // 중앙 박스를 조절할 때 양쪽 박스도 비율에 맞춰 조정하는 함수
+    function adjustBoxes() {
+        const containerWidth = middleBox.parentElement.offsetWidth;
+        const middleWidth = middleBox.offsetWidth;
+
+        // 1:2:1 비율에 맞추어 left와 right의 너비 계산
+        const leftWidth = (containerWidth - middleWidth) / 2;
+        leftBox.style.width = `${leftWidth}px`;
+        rightBox.style.width = `${leftWidth}px`;
+    }
+
+    // 중앙 박스의 크기 변경을 감지
+    new ResizeObserver(adjustBoxes).observe(middleBox);
+
+    // 처음 로드 시 조정 실행
+    adjustBoxes();
+});
