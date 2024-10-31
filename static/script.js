@@ -26,8 +26,11 @@ function Resize(e) {
     const rightBox = e.target.nextElementSibling;
 
     if (leftBox && rightBox) {
-        leftBox.style.width = `${e.clientX}px`;
-        rightBox.style.width = `${window.innerWidth - e.clientX - 20}px`; // 20px는 여백
+        const newWidth = e.clientX - leftBox.getBoundingClientRect().left; // 마우스의 X 위치
+        if (newWidth > 0) { // 너비가 0보다 클 때
+            leftBox.style.width = `${newWidth}px`;
+            rightBox.style.width = `${window.innerWidth - newWidth - 30}px`; // 30px는 두 박스와 구분선의 총 너비
+        }
     }
 }
 

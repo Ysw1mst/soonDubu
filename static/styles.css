@@ -5,19 +5,25 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 중앙 정렬 */
+    justify-content: flex-start; /* 상단 고정 */
     height: 100vh; /* 전체 높이 */
     margin: 0;
 }
 
 .header {
-    margin-bottom: 40px; /* 상단 여백 추가 */
+    margin-bottom: 20px; /* 상단 여백 추가 */
+    position: fixed; /* 상단 고정 */
+    top: 20px; /* 상단 위치 */
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+    z-index: 1; /* 다른 요소 위에 위치하도록 설정 */
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: stretch; /* 세로 방향으로 늘리기 */
+    margin-top: 100px; /* 고정된 헤더 아래 여백 */
 }
 
 .box {
@@ -61,7 +67,7 @@ button:hover {
 .divider {
     width: 1px;
     background-color: rgba(255, 255, 255, 0.5); /* 반투명한 흰색 */
-    height: 80%; /* 박스 높이에 맞추기 */
+    height: 100%; /* 박스의 높이와 동일하게 설정 */
     margin: 0 10px; /* 사이에 여백 */
     cursor: ew-resize; /* 가로 조정 커서 */
     position: relative; /* 절대 위치 설정을 위한 */
