@@ -31,7 +31,7 @@ body {
 /* 메인 컨테이너 */
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* 1:2:1 비율 설정 */
+    grid-template-columns: 1fr 10px 2fr 10px 1fr; /* 1:2:1 비율 설정 및 구분선 추가 */
     gap: 20px;
     width: 90%;
     max-width: 1200px;
@@ -52,6 +52,10 @@ body {
     transition: width 0.3s;
 }
 
+.left-box { grid-column: 1; }
+.middle-box { grid-column: 3; }
+.right-box { grid-column: 5; }
+
 .box h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -67,7 +71,7 @@ body {
     width: 10px;
     background-color: #444;
     cursor: col-resize;
-    margin: 0 5px;
+    margin: 0;
     height: 100%;
     transition: background-color 0.2s;
 }

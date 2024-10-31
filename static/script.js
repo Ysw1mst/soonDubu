@@ -1,37 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const separators = document.querySelectorAll('.separator');
-    let isResizing = false;
-    let currentBox = null;
-    let nextBox = null;
-    let startX = 0;
-    let startWidth = 0;
-    let nextStartWidth = 0;
+const resizers = document.querySelectorAll('.resizer');
+let isResizing = false;
 
-    separators.forEach(separator => {
-        separator.addEventListener('mousedown', (e) => {
-            isResizing = true;
-            currentBox = separator.previousElementSibling;
-            nextBox = separator.nextElementSibling;
-            startX = e.clientX;
-            startWidth = currentBox.getBoundingClientRect().width;
-            nextStartWidth = nextBox.getBoundingClientRect().width;
-            document.body.style.cursor = 'col-resize';
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isResizing) {
-                const dx = e.clientX - startX;
-                currentBox.style.flex = `0 0 ${startWidth + dx}px`;
-                nextBox.style.flex = `0 0 ${nextStartWidth - dx}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            if (isResizing) {
-                isResizing = false;
-                document.body.style.cursor = 'default';
-            }
-        });
+resizers.forEach(resizer => {
+    resizer.addEventListener('mousedown', function (e) {
+        isResizing = true;
+        document.addEventListener('mousemove', resizeBoxes);
+        document.addEventListener('mouseup', stopResizing);
     });
 });
+
+function resizeBoxes(e) {
+    if (!isResizing) return;
+
+    const containerWidth = document.querySelector('.container').clientWidth;
+    const leftBox = document.querySelector('.left-box');
+    const middleBox = document.querySelector('.middle-box');
+    const rightBox = document.querySelector('.right-box');
+
+    let newLeftWidth = e.clientX - leftBox.offsetLeft;
+    let newRightWidth = containerWidth - newLeftWidth - middleBox.offsetWidth;
+
+    if (newLeftWidth < 100 || newRightWidth < 100) return;
+
+    leftBox.style.flex = `0 0 ${newLeftWidth}px`;
+    middleBox.style.flex = `2`;
+    rightBox.style.flex = `0 0 ${newRightWidth}px`;
+}
+
+function stopResizing() {
+    isResizing = false;
+    document.removeEventListener('mousemove', resizeBoxes);
+    document.removeEventListener('mouseup', stopResizing);
+}
