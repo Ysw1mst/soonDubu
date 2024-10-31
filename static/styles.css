@@ -10,7 +10,7 @@ body {
 /* 제목 및 부제목 스타일 */
 .header {
     text-align: center;
-    padding: 40px 0 20px;
+    padding: 60px 0 20px;
 }
 
 .header h1 {
@@ -27,30 +27,47 @@ body {
 /* 메인 컨테이너 스타일 */
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    max-width: 90%; /* 페이지 양 끝 공백 줄임 */
+    height: calc(100vh - 200px); /* 페이지 중앙에 위치하도록 조정 */
+    max-width: 90%;
     margin: 0 auto;
-    padding: 20px 0;
 }
 
 /* 박스 스타일 */
 .box {
-    flex: 1;
-    margin: 0 10px;
-    padding: 20px;
     background-color: #3A3B3C;
     border-radius: 8px;
     text-align: center;
-    min-height: 200px;
+    min-height: 400px; /* 세로 길이 두 배로 조정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    flex-grow: 1;
+    transition: width 0.3s ease;
 }
 
-/* 구분선 스타일 */
+/* 크기 조절 구분선 스타일 */
 .separator {
     background-color: #4F4F4F;
     width: 5px;
     cursor: col-resize;
-    margin: 0 10px; /* 박스 사이 간격을 위한 여백 */
+    margin: 0 10px;
+    height: 100%;
+}
+
+/* 특정 박스의 초기 너비 */
+.left-box {
+    flex: 1;
+}
+
+.middle-box {
+    flex: 2;
+}
+
+.right-box {
+    flex: 1;
 }
 
 /* 버튼 스타일 */

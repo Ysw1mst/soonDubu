@@ -1,32 +1,27 @@
-const resizers = document.querySelectorAll('.resizer');
-const boxes = document.querySelectorAll('.box');
+const separators = document.querySelectorAll('.separator');
+const leftBox = document.querySelector('.left-box');
+const middleBox = document.querySelector('.middle-box');
+const rightBox = document.querySelector('.right-box');
 
-resizers.forEach((resizer) => {
-    let startX;
-    let startWidth;
-    let targetBox;
-
-    resizer.addEventListener('mousedown', (e) => {
-        startX = e.clientX;
-        targetBox = resizer.parentElement;
-        startWidth = targetBox.offsetWidth;
+separators.forEach(separator => {
+    separator.addEventListener('mousedown', function (e) {
+        e.preventDefault();
 
         document.addEventListener('mousemove', resize);
         document.addEventListener('mouseup', stopResize);
     });
 
     function resize(e) {
-        const offset = e.clientX - startX;
-        if (resizer.classList.contains('resizer-left')) {
-            const newWidth = startWidth - offset;
-            if (newWidth > 100) {
-                targetBox.style.width = newWidth + 'px';
-            }
-        } else if (resizer.classList.contains('resizer-right')) {
-            const newWidth = startWidth + offset;
-            if (newWidth > 100) {
-                targetBox.style.width = newWidth + 'px';
-            }
+        const containerWidth = document.querySelector('.container').offsetWidth;
+
+        if (separator.previousElementSibling === leftBox) {
+            let newWidth = e.clientX - leftBox.getBoundingClientRect().left;
+            leftBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.1)}px`;
+            middleBox.style.flex = `0 0 ${Math.max(containerWidth - newWidth - rightBox.offsetWidth, containerWidth * 0.1)}px`;
+        } else if (separator.previousElementSibling === middleBox) {
+            let newWidth = e.clientX - middleBox.getBoundingClientRect().left;
+            middleBox.style.flex = `0 0 ${Math.max(newWidth, containerWidth * 0.2)}px`;
+            rightBox.style.flex = `0 0 ${Math.max(containerWidth - newWidth - leftBox.offsetWidth, containerWidth * 0.1)}px`;
         }
     }
 
