@@ -8,14 +8,25 @@
 </head>
 <body>
     <h1>MP3 파일 업로드</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".mp3" required>
-        <button type="submit">업로드</button>
-    </form>
-
-    {% if midi_file %}
-    <h2>변환된 MIDI 파일 다운로드</h2>
-    <a href="{{ url_for('static', filename=midi_file) }}" download>{{ midi_file }}</a>
-    {% endif %}
+    <div class="container">
+        <div class="box left">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".mp3" required>
+                <button type="submit">업로드</button>
+            </form>
+            {% if midi_file %}
+            <h2>변환된 MIDI 파일 다운로드</h2>
+            <a href="{{ url_for('static', filename=midi_file) }}" download>{{ midi_file }}</a>
+            {% endif %}
+        </div>
+        <div class="box center">
+            <h2>중앙 영역</h2>
+            <p>여기에 다른 내용이 들어갑니다.</p>
+        </div>
+        <div class="box right">
+            <h2>오른쪽 영역</h2>
+            <p>여기에 다른 내용이 들어갑니다.</p>
+        </div>
+    </div>
 </body>
 </html>
