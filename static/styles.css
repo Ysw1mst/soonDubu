@@ -3,10 +3,16 @@ body {
     color: white; /* 텍스트 색상 변경 */
     font-family: Arial, sans-serif; /* 폰트 설정 */
     display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
     justify-content: center; /* 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     height: 100vh; /* 전체 화면 높이 설정 */
     margin: 0; /* 기본 여백 제거 */
+}
+
+.header {
+    text-align: center; /* 제목 중앙 정렬 */
+    margin-bottom: 20px; /* 아래 여백 추가 */
 }
 
 .container {
@@ -25,6 +31,7 @@ body {
     display: flex;
     flex-direction: column; /* 세로 방향으로 정렬 */
     justify-content: center; /* 세로 중앙 정렬 */
+    text-align: center; /* 내용 중앙 정렬 */
 }
 
 .left-box {
