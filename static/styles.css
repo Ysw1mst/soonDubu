@@ -3,17 +3,17 @@ body {
     background-color: #1e1e1e;
     color: #ffffff;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* 헤더 스타일 */
 .header {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -25,18 +25,19 @@ body {
 .header h2 {
     font-size: 1rem;
     color: #a0a0a0;
-    margin: 5px 0 20px;
+    margin-top: 5px;
 }
 
 /* 메인 컨테이너 */
 .container {
     display: grid;
-    grid-template-columns: 1fr 10px 2fr 10px 1fr; /* 1:2:1 비율 설정 및 구분선 추가 */
+    grid-template-columns: 1fr 10px 2fr 10px 1fr; /* 1:2:1 비율 및 구분선 추가 */
     gap: 20px;
     width: 90%;
     max-width: 1200px;
-    min-height: 400px;
     align-items: stretch;
+    margin: auto;
+    flex-grow: 1; /* 푸터를 하단에 고정시키기 위해 */
 }
 
 /* 박스 스타일 */
@@ -71,8 +72,6 @@ body {
     width: 10px;
     background-color: #444;
     cursor: col-resize;
-    margin: 0;
-    height: 100%;
     transition: background-color 0.2s;
 }
 
@@ -113,10 +112,15 @@ form #resetButton:hover {
 
 /* 하단 푸터 */
 .footer {
-    margin-top: 20px;
+    text-align: center;
     font-size: 0.8rem;
     color: #a0a0a0;
-    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    position: sticky;
+    bottom: 0;
 }
 
 .footer a {
