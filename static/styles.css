@@ -1,4 +1,3 @@
-/* 기본 스타일 */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +6,7 @@
 }
 
 body {
-    background-color: #1e1e1e; /* 진한 회색 배경 */
+    background-color: #1e1e1e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,25 +19,25 @@ body {
     gap: 20px;
 }
 
-/* 버튼 스타일 */
-.button {
-    background-color: #c0c0c0; /* 은색 버튼 */
+.upload-button,
+.download-button {
+    background-color: #C0C0C0;
+    border: none;
+    border-radius: 50%; /* 원형으로 만들기 */
     color: #1e1e1e;
     font-size: 1.5rem;
     padding: 20px;
-    width: 120px;
-    height: 120px;
-    border: none;
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s;
-    text-decoration: none;
+    text-align: center;
 }
 
 .upload-button:hover,
 .download-button:hover {
-    background-color: #a0a0a0;
+    background-color: #A0A0A0;
 }
