@@ -3,38 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoonDuBu - Convenient and easy session separation Tool</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Upload and Download</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <h1>SoonDuBu</h1>
-        <h2>Convenient and easy session separation tool</h2>
+    <div class="button-container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label class="upload-button">
+                <input type="file" name="file" accept=".mp3" style="display: none;">
+                Upload
+            </label>
+        </form>
+        <button class="download-button">Download</button>
     </div>
-    
-    <div class="container">
-        <div class="box left-box">
-            <h2>Upload MP3 Files</h2>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" accept=".mp3" required>
-                <button type="submit">Upload</button>
-                <button type="button" id="resetButton">Reset</button>
-            </form>
-        </div>
-        <div class="box middle-box">
-            <h2>Visualization</h2>
-            <p>MIDI 시각화가 표시될 예정입니다.</p>
-        </div>
-        <div class="box right-box">
-            <h2>Checkbox</h2>
-            <p>악기 텍스트 및 체크박스를 통해 추가, 제거, 수정을 할 수 있습니다.</p>
-        </div>
-    </div>
-
-    <div class="footer">
-        &copy; 2024 SoonDuBu - 제작자: Ysw1mst, Kim J.U | Contact: <a href="mailto:youremail@example.com">youremail@example.com</a>
-    </div>
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
