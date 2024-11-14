@@ -1,45 +1,59 @@
-import nbformat
-from nbconvert import ExecutePreprocessor
-from flask import Flask, request, send_file, render_template
 import os
+import glob
+import mido
 
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MIDI_FOLDER'] = 'midi_outputs'
+# MIDI 파일 저장 경로
+midi_folder = 'static/midi/'
+music_folder = 'uploads/separated/'  # 음원 분리된 mp3 파일이 저장될 폴더
 
-# 업로드 폴더 생성
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-os.makedirs(app.config['MIDI_FOLDER'], exist_ok=True)
+# 각 악기에 맞는 MIDI 프로그램 번호 설정 (General MIDI 기준)
+instrument_programs = {
+    'piano': 0,    # Acoustic Grand Piano
+    'guitar': 24,  # Acoustic Guitar (nylon)
+    'bass': 32     # Acoustic Bass
+}
 
-def run_notebook(input_mp3_path):
-    with open("Music_Sep.ipynb") as f:
-        nb = nbformat.read(f, as_version=4)
-    
-    ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
-    ep.preprocess(nb, {'metadata': {'path': './'}})
+# 음원 분리 및 MIDI 변환 함수
+def separate_and_convert(mp3_path):
+    # 1. 음원 분리 수행
+    demucs_command = f"demucs -n htdemucs_6s --mp3 \"{mp3_path}\" -o {music_folder}"
+    os.system(demucs_command)
 
-    # MIDI 파일 생성 후 경로 리턴
-    midi_file_path = os.path.join(app.config['MIDI_FOLDER'], "output.mid")
-    return midi_file_path
+    # 2. 변환된 음원 파일들을 찾아 MIDI로 변환
+    separated_folder = os.path.join(music_folder, "htdemucs_6s")
+    mp3_files = glob.glob(os.path.join(separated_folder, '**/*.mp3'), recursive=True)
 
-@app.route('/')
-def upload_form():
-    return render_template('index.html')
+    midi_files = []
+    for mp3_file in mp3_files:
+        file_name = os.path.splitext(os.path.basename(mp3_file))[0]
+        midi_file_path = os.path.join(midi_folder, f"{file_name}.midi")
+        
+        # 악기 설정
+        instrument = 'piano'  # 기본 악기
+        program_number = instrument_programs[instrument]
+        if 'guitar' in mp3_file.lower():
+            instrument = 'guitar'
+            program_number = instrument_programs[instrument]
+        elif 'bass' in mp3_file.lower():
+            instrument = 'bass'
+            program_number = instrument_programs[instrument]
 
-@app.route('/convert', methods=['POST'])
-def convert_file():
-    if 'mp3_file' not in request.files:
-        return "No file provided", 400
-    
-    mp3_file = request.files['mp3_file']
-    mp3_path = os.path.join(app.config['UPLOAD_FOLDER'], mp3_file.filename)
-    mp3_file.save(mp3_path)
+        # transkun으로 MIDI 파일 생성
+        transkun_command = f"transkun \"{mp3_file}\" \"{midi_file_path}\" --device cuda"
+        os.system(transkun_command)
 
-    # Music_Sep.ipynb 파일을 실행하고 MIDI 파일을 생성
-    midi_file_path = run_notebook(mp3_path)
-    
-    # MIDI 파일 다운로드 링크 제공
-    return send_file(midi_file_path, as_attachment=True)
+        # 악기 변경
+        if os.path.exists(midi_file_path):
+            change_instrument(midi_file_path, program_number)
+            midi_files.append(midi_file_path)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    return midi_files
+
+# MIDI 파일에서 악기 변경 함수
+def change_instrument(midi_file_path, program_number):
+    mid = mido.MidiFile(midi_file_path)
+    for track in mid.tracks:
+        for msg in track:
+            if msg.type == 'program_change':
+                msg.program = program_number
+    mid.save(midi_file_path)
