@@ -10,11 +10,26 @@
     <div class="button-container">
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label class="upload-button">
-                <input type="file" name="file" accept=".mp3" style="display: none;">
+                <input type="file" name="file" accept=".mp3" style="display: none;" onchange="showFileName(this)">
                 Upload
             </label>
+            {% if uploaded_file %}
+            <p class="uploaded-file-name">{{ uploaded_file }}</p> <!-- 업로드된 파일 이름 표시 -->
+            {% endif %}
         </form>
-        <button class="download-button">Download</button>
+        {% if midi_files %}
+        <form action="{{ url_for('download_file', filename=midi_files[0]) }}" method="get">
+            <button class="download-button">Download</button>
+        </form>
+        {% endif %}
     </div>
+    <script>
+        function showFileName(input) {
+            if (input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                document.querySelector('.uploaded-file-name').textContent = fileName;
+            }
+        }
+    </script>
 </body>
 </html>

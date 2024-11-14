@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #1e1e1e;
+    background-color: #333333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,17 +16,19 @@ body {
 
 .button-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
 }
 
 .upload-button,
 .download-button {
-    background-color: #C0C0C0;
+    background-color: #b0b0b0;
     border: none;
-    border-radius: 50%; /* 원형으로 만들기 */
-    color: #1e1e1e;
-    font-size: 1.5rem;
-    padding: 20px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 25px;
     width: 100px;
     height: 100px;
     display: flex;
@@ -34,10 +36,22 @@ body {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s;
-    text-align: center;
 }
 
-.upload-button:hover,
+.upload-button:hover {
+    background-color: #a0a0a0;
+}
+
+.download-button {
+    background-color: #707070;
+}
+
 .download-button:hover {
-    background-color: #A0A0A0;
+    background-color: #606060;
+}
+
+.uploaded-file-name {
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 10px;
 }
