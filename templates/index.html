@@ -5,25 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload and Download</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script> <!-- 자바스크립트 연결 -->
 </head>
 <body>
     <div class="button-container">
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label class="upload-button">
-                <input type="file" name="file" accept=".mp3" style="display: none;" onchange="showFileName(this)">
+                <input type="file" name="file" accept=".mp3" style="display: none;">
                 Upload
             </label>
-            <span class="uploaded-file-name"></span>
         </form>
-        
         {% if midi_file %}
-        <a href="{{ url_for('static', filename='midi/' + midi_file) }}" class="download-button" download>Download</a>
-        {% else %}
-        <button class="download-button" disabled>Download</button>
+            <a href="{{ url_for('static', filename='midi/' + midi_file) }}" download class="download-button">Download</a>
         {% endif %}
     </div>
-
-    <!-- JavaScript 연동 -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% if midi_file %}
+        <p>Converted MIDI File: {{ midi_file }}</p>
+    {% endif %}
 </body>
 </html>

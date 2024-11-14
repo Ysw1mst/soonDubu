@@ -1,7 +1,4 @@
-function showFileName(input) {
-    if (input.files && input.files[0]) {
-        const fileName = input.files[0].name;
-        const display = document.querySelector('.uploaded-file-name');
-        display.textContent = fileName;
-    }
-}
+document.querySelector('input[type="file"]').addEventListener('change', function(event) {
+    let fileName = event.target.files[0].name;
+    alert('Selected file: ' + fileName);
+});

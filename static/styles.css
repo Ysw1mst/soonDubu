@@ -2,46 +2,49 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #333;
-    color: #fff;
+    background-color: #1e1e1e;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: Arial, sans-serif;
+    color: #ffffff;
 }
 
 .button-container {
     display: flex;
     gap: 20px;
-    align-items: center;
 }
 
 .upload-button,
 .download-button {
-    background-color: silver;
+    background-color: #4CAF50;
     border: none;
     border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    padding: 20px;
     width: 100px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
-    font-size: 1rem;
-    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .upload-button:hover,
 .download-button:hover {
-    background-color: #ccc;
+    background-color: #45a049;
 }
 
-.upload-submit {
-    display: none;
+.download-button {
+    background-color: #2196F3;
+}
+
+.download-button:hover {
+    background-color: #1e88e5;
 }
