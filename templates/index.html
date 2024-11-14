@@ -15,7 +15,12 @@
             </label>
             <span class="uploaded-file-name"></span>
         </form>
-        <button class="download-button">Download</button>
+        
+        {% if midi_file %}
+        <a href="{{ url_for('static', filename='midi/' + midi_file) }}" class="download-button" download>Download</a>
+        {% else %}
+        <button class="download-button" disabled>Download</button>
+        {% endif %}
     </div>
 
     <!-- JavaScript 연동 -->
