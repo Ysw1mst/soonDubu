@@ -1,0 +1,212 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f3f3f3, #e3e3e3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+/* 헤더 */
+header {
+    text-align: center;
+    padding: 20px 0;
+    color: #333;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* 컨테이너 */
+.container {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 섹션 공통 스타일 */
+section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 드래그 앤 드롭 영역 */
+#drop-area {
+    border: 2px dashed #6a11cb;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+#drop-area:hover {
+    background-color: #eaeaea;
+}
+
+/* 파일명 표시 스타일 */
+#file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+/* 버튼 스타일 */
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button input {
+    display: none; /* 파일 업로드 버튼 숨김 */
+}
+
+/* MIDI 시각화 영역 스타일 */
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 노트 트랙 스타일 */
+.note-track {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.note-track h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* 노트 라인 */
+.note-line {
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 노트 */
+.note {
+    position: absolute;
+    height: 100%;
+    width: 10px;
+    background-color: #6a11cb;
+    border-radius: 3px;
+    animation: moveNote 3s linear infinite;
+}
+
+/* 애니메이션 */
+@keyframes moveNote {
+    from {
+        left: 100%;
+    }
+    to {
+        left: -10%;
+    }
+}
+
+/* 체크박스 그룹 */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: rgba(240, 240, 240, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* 다운로드 버튼 */
+.download-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.small-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.small-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 재생 버튼 스타일 */
+#play-midi {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #34c759, #30b158);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
